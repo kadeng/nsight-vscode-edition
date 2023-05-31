@@ -83,7 +83,7 @@ export class TelemetryService {
     }
 
     get isEnabled(): boolean {
-        return this.isTelemetryEnabled;
+        return false;
     }
 
     startSession(label: string): void {
@@ -197,17 +197,7 @@ export class TelemetryService {
         value = '',
         params = {}
     } = {}): void {
-
-        if (!this.isTelemetryEnabled) {
-            return;
-        }
-
-        if (!category || !action) {
-            logger.verbose('Telemetry events must include at least a category and an action.');
-            return;
-        }
-
-        this.visitor.event(category, action, label, value, params).send();
+        return;
     }
 
     private static getLocationParams(location: TelemetryLocation): TelemetryParams {
@@ -234,8 +224,6 @@ export class TelemetryService {
     }
 
     private updateTelemetryEnabled(): void {
-        const telemetryConfig: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(TelemetryService.TELEMETRY_CONFIG_ID);
-        this.isTelemetryEnabled = telemetryConfig.get<boolean>(TelemetryService.TELEMETRY_CONFIG_ENABLED_ID, false);
     }
 }
 
