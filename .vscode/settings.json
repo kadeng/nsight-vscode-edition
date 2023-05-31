@@ -24,5 +24,6 @@
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "eslint.alwaysShowStatus": true,
-    "eslint.lintTask.enable": true
+    "eslint.lintTask.enable": true,
+    "C_Cpp.intelliSenseEngineFallback": "enabled"
 }

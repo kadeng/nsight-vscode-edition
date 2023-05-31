@@ -13,7 +13,6 @@
 import * as ua from 'universal-analytics';
 import * as uuid from 'uuid';
 import * as vscode from 'vscode';
-import { logger } from '@vscode/debugadapter';
 
 import * as types from './debugger/types';
 
@@ -44,13 +43,7 @@ export type TelemetryLocation = 'host' | 'debug-adapter';
 export class TelemetryService {
     private visitor: ua.Visitor;
 
-    private isTelemetryEnabled = false;
-
     private static readonly CLIENT_ID_KEY = 'nsight.telemetryClientId';
-
-    private static readonly TELEMETRY_CONFIG_ID = 'telemetry';
-
-    private static readonly TELEMETRY_CONFIG_ENABLED_ID = 'enableTelemetry';
 
     constructor(context: vscode.ExtensionContext, trackingId: string, extensionName: string, extensionVersion: string) {
         let clientId: string | undefined = context.globalState.get<string>(TelemetryService.CLIENT_ID_KEY);
